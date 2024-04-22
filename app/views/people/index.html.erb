@@ -1,0 +1,43 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <h1>People</h1>
+
+  <div class="w-100 d-flex align-items-center justify-content-center">
+    <div class="table__wrapper | d-flex flex-column align-items-center justify-content-between gap-5 p-4 mx-4 mt-4">
+      <table class="w-100" width="100">
+        <thead>
+          <tr>
+            <th colspan="3"><%= link_to "First Name", sort: "first_name" %></th>
+            <th colspan="3"><%= link_to "Last Name", sort: "last_name" %></th>
+            <th colspan="3"><%= link_to "Species", sort: "species" %></th>
+            <th colspan="3"><%= link_to "Gender", sort: "gender" %></th>
+            <th colspan="3"><%= link_to "Weapon", sort: "weapon" %></th>
+            <th colspan="3"><%= link_to "Vehicle", sort: "vehicle" %></th>
+            <th colspan="3"><%= link_to "Locations", sort: "locations.name" %></th>
+            <th colspan="3"><%= link_to "Affiliations", sort: "affiliations.name" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @people.each do |person| %>
+            <tr>
+              <td colspan="3" class="border-start ps-2"><%= person.first_name %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.last_name %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.species %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.gender %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.weapon %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.vehicle %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.locations.map(&:name).join(', ') %></td>
+              <td colspan="3" class="border-start ps-2"><%= person.affiliations.map(&:name).join(', ') %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <%= will_paginate @people %>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column align-items-start mt-5">
+    <em>"I might not be the best developer in the entire world, but I am confident enough to say that I am one of the best learners and most hardworking people."</em>
+    <em>Sebastian D. Echegaray</em>
+  </div>
+</div>
