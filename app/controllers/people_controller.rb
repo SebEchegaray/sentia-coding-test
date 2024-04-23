@@ -23,6 +23,11 @@ class PeopleController < ApplicationController
                 @people.order(created_at: :asc)
               end
 
+    if params[:search].present?
+      search_term = params[:search]
+      @people = @people.where("people.first_name LIKE :search OR people.last_name LIKE :search OR people.species LIKE :search OR people.gender LIKE :search OR people.weapon LIKE :search OR people.vehicle LIKE :search OR locations.name LIKE :search OR affiliations.name LIKE :search", search: "%#{search_term}%").references(:locations, :affiliations)
+    end
+
     @people = @people.paginate(page: params[:page], per_page: 10)
   end
 end

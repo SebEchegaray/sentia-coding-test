@@ -3,6 +3,12 @@
 
   <div class="w-100 d-flex align-items-center justify-content-center">
     <div class="table__wrapper | d-flex flex-column align-items-center justify-content-between gap-5 p-4 mx-4 mt-4">
+      
+      <%= form_tag people_path, method: :get do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Search..." %>
+        <%= submit_tag "Search" %>
+      <% end %>
+
       <table class="w-100" width="100">
         <thead>
           <tr>
